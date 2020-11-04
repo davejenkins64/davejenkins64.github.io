@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Virtual Lab
-permalink: compute_node
+title: "Virtual Lab"
+permalink: /compute_node/
 ---
 
 ## Setting up the Compute Node

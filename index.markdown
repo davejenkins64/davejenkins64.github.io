@@ -76,7 +76,7 @@ far, as well as experiment with containerizing Jekyll.
 ### Openstack (microstack)
 
 After a failed attempt to install devstack, I took the ubuntu way and 
-installed [microstack.](/microstack/).  This worked well, and you can
+installed [microstack](/microstack/).  This worked well, and you can
 disable the daemons when you don't need them.
 
 ### Kubernetes (microk8s)
@@ -84,4 +84,4 @@ disable the daemons when you don't need them.
 ## Blog
 
 Here is a link to my 
-[blog](/blog.html/).
+[blog](/blog/).

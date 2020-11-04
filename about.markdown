@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About Me
-permalink: about
+title: "About Me"
+permalink: /about/
 ---
 
 ## Agile Full-Stack Developer

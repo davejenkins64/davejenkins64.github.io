@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Installing Vagrant
-permalink: vagrant
+title: "Installing Vagrant"
+permalink: /vagrant/
 ---
 
 ## Vagrant Install/Configure

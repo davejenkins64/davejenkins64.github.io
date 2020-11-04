@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Installing MicroStack
-permalink: microstack
+title: "Installing MicroStack"
+permalink: /microstack/
 ---
 
 ## Base OS Install

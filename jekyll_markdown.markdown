@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Jekyll Markdown
-permalink: jekyll_markdown
+title: "Jekyll Markdown"
+permalink: /jekyll_markdown/
 ---
 
 ## Notes
