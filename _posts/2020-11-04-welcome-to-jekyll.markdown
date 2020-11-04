@@ -49,4 +49,7 @@ Frequently I would see a file index page instead.  I also added `--incremental`
 this may have helped.
 
 The trick now that this is working locally will be to see which of these
-files need to be pushed to github.  Perhps that is the next blog entry?
+files need to be pushed to github.  For starters I've added the entire
+\_site directory to my `.gitignore`.  It also turns out that you need to be
+careful with the header items in the front matter of each page.  Either
+that, or just be more patient for the changes to get applied by github?
