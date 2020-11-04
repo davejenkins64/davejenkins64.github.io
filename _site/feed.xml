@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-11-04T17:21:40-05:00</updated><id>/feed.xml</id><title type="html">Dave Jenkins’ Portfolio</title><subtitle>This site is a cross between a blog and a portfolio of projects I'm  interested in.</subtitle><entry><title type="html">Welcome to Jekyll!</title><link href="/jekyll/2020/11/04/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-11-04T04:38:56-05:00</published><updated>2020-11-04T04:38:56-05:00</updated><id>/jekyll/2020/11/04/welcome-to-jekyll</id><content type="html" xml:base="/jekyll/2020/11/04/welcome-to-jekyll.html">&lt;h2 id=&quot;static-site-generation&quot;&gt;Static Site Generation&lt;/h2&gt;
+
+&lt;p&gt;Since Markdown is taking over the work, and it is pretty easy to write,
+wouldn’t it be nice if there was a way to make a static web site from
+a small collection of markdown files and host it on, say, gitub pages?&lt;/p&gt;
+
+&lt;p&gt;If you are reading this post, you are looking at the outcome of learning
+just enough Jekyll to generate a site.  I’ve been keeping my “notes to self”
+files in markdown format for a little while now.  So, I was able to fairly
+easily import a few to set up some of the initial content for this site.&lt;/p&gt;
+
+&lt;p&gt;My plan, going forward, will be to record my progress as blog entries
+but also to publish more of my notes files as &lt;em&gt;Howtos&lt;/em&gt; on this site.&lt;/p&gt;
+
+&lt;p&gt;So, what is important to know about Jekyll?&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;It (assuming you pick the
+minima theme, like I did) will automatically incude all of your markdown
+files as links in your header.  If you want to override this, you add
+a &lt;em&gt;header_pages:&lt;/em&gt; array to your _config.yml file.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;You can add blog entries to the _posts directory, and as long as they
+have the correct format (YYYY-MM-DD-title.markdown) they will be accessible
+on your ‘blog’ index page (that has &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;layout: home&lt;/code&gt; in its front matter).&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;To create a new blog, run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll new **title**&lt;/code&gt;.  Warning, I did this in
+the root of my davejenkins64.github.io github pages repository, and it
+created a subdirectory.  I wound up moving all the content up to the root
+and that seemed to work.&lt;/p&gt;
+
+&lt;p&gt;You can test locally by making sure jekyll is in your $PATH and running:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;home/dj/.gem/ruby/2.5.0/bin:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
+bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve &lt;span class=&quot;nt&quot;&gt;--host&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;IP_ADDRESS&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--livereload&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;If you leave off the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--host&lt;/code&gt; it will listen on localhost, but I choose
+to do my editing on a server.  The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--livereload&lt;/code&gt; option will cause Jekyll
+to detect changes to files in your project and reload them in your browser.
+Frequently I would see a file index page instead.  I also added &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--incremental&lt;/code&gt;
+this may have helped.&lt;/p&gt;
+
+&lt;p&gt;The trick now that this is working locally will be to see which of these
+files need to be pushed to github.  Perhps that is the next blog entry?&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><summary type="html">Static Site Generation</summary></entry></feed>

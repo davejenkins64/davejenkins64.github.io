@@ -35,9 +35,10 @@ the root of my davejenkins64.github.io github pages repository, and it
 created a subdirectory.  I wound up moving all the content up to the root
 and that seemed to work.
 
-You can test locally by running:
+You can test locally by making sure jekyll is in your $PATH and running:
 
 {% highlight bash %}
+PATH=home/dj/.gem/ruby/2.5.0/bin:$PATH
 bundle exec jekyll serve --host *IP_ADDRESS* --livereload
 {% endhighlight %}
 

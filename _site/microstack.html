@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Installing MicroStack | Dave Jenkins’ Portfolio</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Installing MicroStack" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This site is a cross between a blog and a portfolio of projects I’m interested in." />
+<meta property="og:description" content="This site is a cross between a blog and a portfolio of projects I’m interested in." />
+<link rel="canonical" href="/microstack" />
+<meta property="og:url" content="/microstack" />
+<meta property="og:site_name" content="Dave Jenkins’ Portfolio" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Installing MicroStack" />
+<script type="application/ld+json">
+{"headline":"Installing MicroStack","url":"/microstack","description":"This site is a cross between a blog and a portfolio of projects I’m interested in.","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Dave Jenkins' Portfolio" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Dave Jenkins&#39; Portfolio</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/compute_node">Virtual Lab</a><a class="page-link" href="/about">About Me</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Installing MicroStack</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="base-os-install">Base OS Install</h2>
+
+<p>October 29, 2020</p>
+
+<p>First, I reinstalled ubuntu on the test machine.  Got the 20.04 server
+ISO, burned to a free 2GB usb stick and
+installed, update, dist-upgrade.  See <a href="/compute_node">compute node</a> for more
+details.</p>
+
+<h1 id="openstack-install">Openstack Install</h1>
+
+<p>I’m trying the ubuntu-approved method of installing microstack on a single-node.
+The first step is to install the snap</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>snap <span class="nb">install </span>microstack <span class="nt">--devmod</span> <span class="nt">--beta</span></code></pre></figure>
+
+<p>Yikes, didn’t work, but perhaps becuase the update/dist-ugprade were in progress?</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">020-10-29T17:44:18Z INFO snap <span class="s2">"microstack"</span> has bad plugs or slots:
+hugepages-control <span class="o">(</span>unknown interface <span class="s2">"hugepages-control"</span><span class="o">)</span>
+2020-10-29T17:45:40Z INFO snap <span class="s2">"microstack"</span> has bad plugs or slots:
+hugepages-control <span class="o">(</span>unknown interface <span class="s2">"hugepages-control"</span><span class="o">)</span>
+error: cannot perform the following tasks:
+- Run <span class="nb">install </span>hook of <span class="s2">"microstack"</span> snap <span class="k">if </span>present <span class="o">(</span>run hook <span class="s2">"install"</span>: 
+<span class="nt">-----</span>
++ set-default-config.py
++ snapctl stop <span class="nt">--disable</span> microstack.nginx
++ snapctl stop <span class="nt">--disable</span> microstack.keystone-uwsgi
++ snapctl stop <span class="nt">--disable</span> microstack.placement-uwsgi
++ snapctl stop <span class="nt">--disable</span> microstack.nova-api
++ snapctl stop <span class="nt">--disable</span> microstack.nova-compute
++ snapctl stop <span class="nt">--disable</span> microstack.nova-conductor
++ snapctl stop <span class="nt">--disable</span> microstack.nova-api-metadata
++ snapctl stop <span class="nt">--disable</span> microstack.nova-spicehtml5proxy
++ snapctl stop <span class="nt">--disable</span> microstack.nova-scheduler
++ snapctl stop <span class="nt">--disable</span> microstack.neutron-api
++ snapctl stop <span class="nt">--disable</span> microstack.glance-api
++ snapctl stop <span class="nt">--disable</span> microstack.registry
++ snapctl stop <span class="nt">--disable</span> microstack.cinder-uwsgi
++ snapctl stop <span class="nt">--disable</span> microstack.ovsdb-server
++ snapctl stop <span class="nt">--disable</span> microstack.neutron-ovn-metadata-agent
++ snapctl stop <span class="nt">--disable</span> microstack.ovn-ovsdb-server-sb
++ snapctl stop <span class="nt">--disable</span> microstack.ovn-ovsdb-server-nb
++ snapctl stop <span class="nt">--disable</span> microstack.ovs-vswitchd
+
+    &lt;aborted&gt;
+    <span class="nt">-----</span><span class="o">)</span></code></pre></figure>
+
+<p>Second try…</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>snap <span class="nb">install </span>microstack <span class="nt">--devmode</span> <span class="nt">--beta</span></code></pre></figure>
+
+<p>Yields:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">microstack <span class="o">(</span>beta<span class="o">)</span> ussuri from Canonical✓ installed
+WARNING: There is 1 new warning. See <span class="s1">'snap warnings'</span><span class="nb">.</span>
+user@compute:~<span class="nv">$ </span>snap warnings
+last-occurrence:  today at 17:45 UTC
+warning: |
+  snap <span class="s2">"microstack"</span> has bad plugs or slots: hugepages-control <span class="o">(</span>unknown interface
+  <span class="s2">"hugepages-control"</span><span class="o">)</span></code></pre></figure>
+
+<p>I had tried to install devstack from Red Hat to get Openstack prior
+to this.  It created a stack user in /opt/stack and had me run devstack.sh,
+but that didn’t ever work.</p>
+
+<p>Let’s see if this creates /opt/stack and the stack user for us.  Nope.</p>
+
+<h2 id="microstack-init">Microstack init</h2>
+
+<p>Ignoring the above warning for now.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>microstack init <span class="nt">--auto</span> <span class="nt">--control</span></code></pre></figure>
+
+<p>This seems to have worked better.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">2020-10-29 17:57:34,518 - microstack_init - INFO - Configuring clustering ...
+2020-10-29 17:57:34,811 - microstack_init - INFO - Setting up as a control node.
+2020-10-29 17:57:40,345 - microstack_init - INFO - Configuring networking ...
+2020-10-29 17:57:56,383 - microstack_init - INFO - Opening horizon dashboard up to <span class="k">*</span>
+2020-10-29 17:57:59,736 - microstack_init - INFO - Waiting <span class="k">for </span>RabbitMQ to start ...
+Waiting <span class="k">for </span>192.168.21.222:5672
+2020-10-29 17:58:25,853 - microstack_init - INFO - RabbitMQ started!
+2020-10-29 17:58:25,854 - microstack_init - INFO - Configuring RabbitMQ ...
+2020-10-29 17:58:28,748 - microstack_init - INFO - RabbitMQ Configured!
+2020-10-29 17:58:28,847 - microstack_init - INFO - Waiting <span class="k">for </span>MySQL server to start ...
+Waiting <span class="k">for </span>192.168.21.222:3306
+2020-10-29 17:58:28,864 - microstack_init - INFO - Mysql server started! Creating databases ...
+2020-10-29 17:58:37,477 - microstack_init - INFO - Configuring Keystone Fernet Keys ...
+2020-10-29 18:03:55,932 - microstack_init - INFO - Bootstrapping Keystone ...
+2020-10-29 18:04:25,470 - microstack_init - INFO - Creating service project ...
+2020-10-29 18:04:36,411 - microstack_init - INFO - Keystone configured!
+2020-10-29 18:04:36,578 - microstack_init - INFO - Configuring the Placement service...
+2020-10-29 18:05:18,019 - microstack_init - INFO - Running Placement DB migrations...
+2020-10-29 18:06:04,610 - microstack_init - INFO - Configuring nova control plane services ...
+2020-10-29 18:06:35,144 - microstack_init - INFO - Running Nova API DB migrations <span class="o">(</span>this may take a lot of <span class="nb">time</span><span class="o">)</span>...
+2020-10-29 18:10:03,202 - microstack_init - INFO - Running Nova DB migrations <span class="o">(</span>this may take a lot of <span class="nb">time</span><span class="o">)</span>...
+2020-10-29 18:30:17,092 - microstack_init - INFO - Creating default flavors...
+2020-10-29 18:31:07,421 - microstack_init - INFO - Configuring nova compute hypervisor ...
+2020-10-29 18:31:08,930 - microstack_init - INFO - Configuring the Spice HTML5 console service...
+2020-10-29 18:31:09,727 - microstack_init - INFO - Configuring Neutron
+Waiting <span class="k">for </span>192.168.21.222:9696
+2020-10-29 18:44:50,972 - microstack_init - INFO - Configuring Glance ...
+Waiting <span class="k">for </span>192.168.21.222:9292
+2020-10-29 18:47:48,590 - microstack_init - INFO - Adding cirros image ...
+2020-10-29 18:47:56,906 - microstack_init - INFO - Creating security group rules ...
+2020-10-29 18:48:18,528 - microstack_init - INFO - Configuring the Cinder services...
+2020-10-29 18:50:17,244 - microstack_init - INFO - Running Cinder DB migrations...
+2020-10-29 18:52:58,401 - microstack_init - INFO - restarting libvirt and virtlogd ...
+2020-10-29 18:53:22,702 - microstack_init - INFO - Complete. Marked microstack as initialized!</code></pre></figure>
+
+<h2 id="microstack-usage">Microstack Usage</h2>
+
+<p>Unlike the devstack approach where the passwords are entered into 
+a local.conf file before installation, microstack must be managing 
+all of its own passwords.  So, to test the install
+go to port 80 on the local IP and log in as ‘admin’.  The password is:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>snap get microstack config.credentials.keystone-password</code></pre></figure>
+
+<p>You can also use the CLI, but note that the entry point is 
+<code class="language-plaintext highlighter-rouge">microstack.openstack</code>, try
+<code class="language-plaintext highlighter-rouge">microstack.openstack --help</code> to start.<br />
+Also, <code class="language-plaintext highlighter-rouge">microstack.openstack catalog list</code> gives internal, external and admin API endpoints for each OpenStack service.</p>
+
+<h2 id="microstack-testing">Microstack Testing</h2>
+
+<p>As always, the test is to get a VM running. Microstack has a shortcut for this:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">microstack launch cirros <span class="nt">--name</span> <span class="nb">test</span></code></pre></figure>
+
+<p>Gives:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">Creating <span class="nb">local</span> <span class="s2">"microstack"</span> ssh key at /home/user/snap/microstack/common/.ssh/id_microstack
+Launching server ...
+Allocating floating ip ...
+Server <span class="nb">test </span>launched! <span class="o">(</span>status is BUILD<span class="o">)</span>
+
+Access it with <span class="sb">`</span>ssh <span class="nt">-i</span> /home/user/snap/microstack/common/.ssh/id_microstack cirros@10.20.20.191<span class="sb">`</span>
+You can also visit the OpenStack dashboard at http://10.20.20.1:80</code></pre></figure>
+
+<p>And to stop it?  <code class="language-plaintext highlighter-rouge">microstack.openstack server delete test</code>.<br />
+You can also pause or stop it without deleting it.</p>
+
+<p>Verified you can’t ssh into a paused or stopped server, which makes sense.<br />
+Hangs, times out eventually.<br />
+But filesystem changes persist through pause/unpause and stop/start, 
+even reboot.  Which makes sense since these are VMs.</p>
+
+<p>Note: may not be able to use the default GUI to launch instances, 
+their m1.tiny may be too large to create quickly?<br />
+The error I get is:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">did not finish being created even after we waited 3 seconds or 2 attempts. And its status is error.</code></pre></figure>
+
+<p>So, just use the command line to fire up VMs for now.</p>
+
+<h2 id="microstack-performance-overhead">Microstack Performance Overhead</h2>
+
+<p>If I’m using this server as a docker swarm host, or a microk8s host, 
+there may be no point in running all of the openstack daemons too, 
+using up resources.<br />
+This is how to disable them temporarily.  From the documentation.</p>
+
+<blockquote>
+  <p>You may wish to temporarily disable your MicroStack installation when not in use. To do so, run:</p>
+
+  <blockquote>
+    <p>sudo snap disable microstack</p>
+  </blockquote>
+
+  <p>To re-enable it, run:</p>
+
+  <blockquote>
+    <p>sudo snap enable microstack</p>
+  </blockquote>
+</blockquote>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Dave Jenkins&#39; Portfolio</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Dave Jenkins&#39; Portfolio</li><li><a class="u-email" href="mailto:davejenkins64@gmail.com">davejenkins64@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/davejenkins64"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">davejenkins64</span></a></li><li><a href="https://www.linkedin.com/in/davejenkins64"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg> <span class="username">davejenkins64</span></a></li><li><a href="https://www.twitter.com/davejenkins64"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">davejenkins64</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This site is a cross between a blog and a portfolio of projects I&#39;m  interested in.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
